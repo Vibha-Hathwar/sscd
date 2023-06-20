@@ -6,8 +6,19 @@
 #include<stdlib.h>
 int n,m=0,p,i=0,j=0;
 char a[10][10],f[10];
-void first(char c);
-
+void first(char c)
+{
+    int k;
+    if(!isupper(c))
+        f[m++]=c;
+    for(k=0;k<n;k++)
+        if(a[k][0]==c)
+        {
+            if(islower(a[k][2]))
+                f[m++]=a[k][2];
+            else first(a[k][2]);
+        }
+}
 int main()
 {
     int i,z;
@@ -33,17 +44,4 @@ int main()
     }
     while(z==1);
     return(0);
-}
-void first(char c)
-{
-    int k;
-    if(!isupper(c))
-        f[m++]=c;
-    for(k=0;k<n;k++)
-        if(a[k][0]==c)
-        {
-            if(islower(a[k][2]))
-                f[m++]=a[k][2];
-            else first(a[k][2]);
-        }
 }
